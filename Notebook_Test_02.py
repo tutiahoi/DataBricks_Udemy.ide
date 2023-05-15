@@ -14,12 +14,21 @@ def Conn_SQLServer():
     sqlContext = SQLContext(sc)
     spark = sqlContext.sparkSession
 
+    print(pyodbc.drivers())
+
     database = "DE_Study"
     user = "adminde"
     password  = "Nguyenquangn01"
+    conn = pyodbc.connect(f'Driver={{ODBC Driver 18 for SQL Server}};Server=svdestudy.database.windows.net,1433;Database=DE_Study;Uid=adminde;Pwd=Nguyenquangn01;Trusted_Connection=yes;')
+    #conn = pyodbc.connect(f'DRIVER={{ODBC Driver 18 for SQL Server}};SERVER=svdestudy.database.windows.net,1433;DATABASE={database};UID={user};PWD={password}')
+   
+    # database = "DE_Study"
+    # user = "sa"
+    # password  = "Nguyenquangn01"
 
-    conn = pyodbc.connect(f'DRIVER={{ODBC Driver 18 for SQL Server}};SERVER=tcp:svdestudy.database.windows.net,1433;DATABASE={database};UID={user};PWD={password};Encrypt=yes;TrustServerCertificate=no;')
+    # conn = pyodbc.connect(f'DRIVER={{ODBC Driver 13 for SQL Server}};SERVER=localhost,1433;DATABASE={database};UID={user};PWD={password}')
     
+ 
     return conn
 
 def Read_DB_SQLServer(query):
@@ -48,6 +57,6 @@ def Wirte_DB_SQLServer(query):
         return "Error by query command!!!!!"
     
 strsql ="Insert into dbo.Test(ID,Code,Description) values({},{},{})"
-strsql = strsql.format(6,"'SSI'","'SSI'")
+strsql = strsql.format(7,"'SSI'","'SSI'")
 result = Wirte_DB_SQLServer(strsql)
 print('qua')
