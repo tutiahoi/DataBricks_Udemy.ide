@@ -10,6 +10,7 @@ def databaseConnection(driver, server, database, user, pwd):
     row = sqlCMD.fetchone()
     while row:
         print(str(row[0]) + " " + str(row[1]))
+        
         row = sqlCMD.fetchone()
  
  
