@@ -19,9 +19,10 @@ def Conn_SQLServer():
     database = "DE_Study"
     user = "adminde"
     password  = "Nguyenquangn01"
-    conn = pyodbc.connect(f'Driver={{ODBC Driver 18 for SQL Server}};Server=svdestudy.database.windows.net,1433;Database=DE_Study;Uid=adminde;Pwd=Nguyenquangn01;Trusted_Connection=yes;')
-    #conn = pyodbc.connect(f'DRIVER={{ODBC Driver 18 for SQL Server}};SERVER=svdestudy.database.windows.net,1433;DATABASE={database};UID={user};PWD={password}')
-   
+    Driver='{ODBC Driver 18 for SQL Server};Server=tcp:svdestudy.database.windows.net,1433;Database=DE_Study;Uid=adminde;Pwd=Nguyenquangn01;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;'
+    #conn = pyodbc.connect(f'Driver={{ODBC Driver 18 for SQL Server}};Server=svdestudy.database.windows.net,1433;Database=DE_Study;Uid=adminde;Pwd=Nguyenquangn01;Trusted_Connection=yes;')
+    conn = pyodbc.connect(Driver)
+    print(conn)
     # database = "DE_Study"
     # user = "sa"
     # password  = "Nguyenquangn01"
